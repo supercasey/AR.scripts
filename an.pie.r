@@ -8,7 +8,7 @@
 #' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
 #' @param consts is a vector of characters representing  the parameters to be computed, options (as of 2014) include TN, TP, and NO23
 #' @param wys is a vectors of numbers representing the water years desired for the pie chart, generally these will be 1993 to the current water year (expressed as 1993:2013 presently)
-#' @return A dataframe with four columns "Value", which is the value to be plotted in the pie chart; "Constit", the constiuent; "WY", the water year, and "Basin", the basin being plotted
+#' @return A dataframe with five columns "Value", which is the value to be plotted in the pie chart; "Constit", the constiuent; "Ptype", which indicates the type of load (WY for water year in this case);"WY", the water year, and "Basin", the basin being plotted
 
 an.pie<-function(aload,consts,wys){
 
