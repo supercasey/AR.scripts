@@ -2,7 +2,7 @@
 #'
 #' Computes a value to be plotted as a line on bar charts within the detailed site reports
 #'
-#' @param aload is a data frame with all annual loads and flows from all NAWQA National Fixed Site Network locations.  This data frame is requires 4 columns
+#' @param aload is a data frame with all annual loads and flows from all NAWQA National Fixed Site Network locations.  This data frame is requires 6 columns
 #' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONSTIT", which are abbreviations of the various water quality constituents;
 #' MODTYPE, which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured; 
 #' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
