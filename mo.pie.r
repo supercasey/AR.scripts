@@ -57,7 +57,7 @@ if(length(mlowmidmisspie)<1){mlowmidmisspie<-NA}
 
 #Compute the percentage of the total load from the lower Mississippi river basin and assign it to the variable "mlowmisspie"
 mlowmisspie<-(mload[mload$SITE_QW_ID=="07373420"&mload$MONTH==mnth&mload$SITE_ABB=="MISS"&mload$WY==wycur&mload$CONSTIT==const&mload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-mload[mload$SITE_QW_ID=="07022000"&mload$MONTH==mnth&mload$WY==wycur&mload$CONSTIT==const&mload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-markpie*mgulfpie-mohpie*mgulfpie)/mgulfpie
-if(length(mlowmidmisspie)<1){mlowmidmisspie<-NA}
+if(length(mlowmisspie)<1){mlowmisspie<-NA}
 
 #Aggregate and name columns
 if(i==1&j==1){
