@@ -149,7 +149,7 @@ if(!is.nan(mean(aload[aload$SITE_QW_ID=="06902000"&aload$CONSTIT==const&aload$MO
 }else{missriv@data[missriv@data$Downstream=="06902000","load"]<-.011;grand<-.011}	
 
 #POPULATE LOADS FOR THE OSAGE RIVER BASED ON LINEAR INTERPOLATION, IF NO DATA, SET LOADS TO .011
-if(!is.nan(mean(aload[aload$SITE_QW_ID=="06926510"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]))){
+if(!is.nan(mean(aload[aload$SITE_QW_ID=="06926510"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY%in%wycur,"TONS"]))){
 	osag<-mean(aload[aload$SITE_QW_ID=="06926510"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY%in%wycur,"TONS"])
 	missriv@data[missriv@data$Downstream=="06926510","load"]<-seq(.1,osag,length.out=nrow(missriv@data[missriv@data$Downstream=="06926510",]))
 }else{missriv@data[missriv@data$Downstream=="06926510","load"]<-.011;osag<-.011}	
