@@ -23,7 +23,7 @@
 
 #ORDER TO THE SHAPE FILE BY TYPE IN ASCENDING ORDER TO ENSURE ACCURATE ORDERING
 missriv<-missriv[order(missriv$TYPE),]
-
+if(p.type=="WY"){aload<-a.ll}else if(p.type=="May"){aload<-m.ll}
 #CREATE A VARIABLE NAMED "LOAD" WITH NO VALUES
 missriv$load <-NA
 
