@@ -14,7 +14,7 @@
 			#' "MODTYPE", which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured; "MONTH", the month loads are computed;
 			#' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
 			#' @param const is a character representing  the constituent to be computed, options (as of 2014) include TN, TP, and NO23
-			#' @param wys is a  numbers representing the water year desired for one of the mean computations the pie chart, generally this will be one of 1993 to the current water year (2013 presently)
+			#' @param wys is a  number representing the water year desired for one of the mean computations the pie chart, generally this will be one of 1993 to the current water year (2013 presently)
 			#' @param p.type represents the option to pick water year or May Loads, the two options are "WY" or "May"
 			#' @return The missriv shapefile is appended with a column entitled "load" to be used to computing line widths
 			
@@ -215,7 +215,7 @@ missriv@data[missriv@data$Downstream=="322023090544500","load"]<-seq(mis.4,mis.5
 missriv@data[missriv@data$Downstream=="322023090544500"&missriv@data$TYPE>3,"load"]<-missriv@data[missriv@data$Downstream=="322023090544500"&missriv@data$TYPE>3,"load"]+ohi.2
 #adding ark at appropriate location
 missriv@data[missriv@data$Downstream=="322023090544500"&missriv@data$TYPE>30,"load"]<-missriv@data[missriv@data$Downstream=="322023090544500"&missriv@data$TYPE>30,"load"]+ark
-}else{mis.5.1<-aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]-((aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]-mis.4-ohi.2-ark)*.2)
+}else{mis.5.1<-aload[aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]-((aload[aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]-mis.4-ohi.2-ark)*.2)
 	missriv@data[missriv@data$Downstream=="322023090544500","load"]<-seq(mis.4,mis.5.1-ohi.2-ark,length.out=nrow(missriv@data[missriv@data$Downstream=="322023090544500",]))
 							#adding ohio at appropriate location
 							missriv@data[missriv@data$Downstream=="322023090544500"&missriv@data$TYPE>3,"load"]<-missriv@data[missriv@data$Downstream=="322023090544500"&missriv@data$TYPE>3,"load"]+ohi.2
@@ -235,8 +235,8 @@ missriv@data[missriv@data$Downstream=="07355500","load"]<-seq(.1,red,length.out=
 }else{missriv@data[missriv@data$Downstream=="07355500","load"]<-.011;red<-.011}	
 
 #POPULATE LOADS FOR THE MISSISSIPPI RIVER FROM VICKSBURG TO THE OLD RIVER OUTFLOW BASED ON LINEAR INTERPOLATION, IF NOT DATA, SET LOADS TO .011 (THESE DATA SHOULD ALWAYS BE PRESENT)
-if(length(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"])==1){
-mis.5.1<-aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]
+if(length(aload[aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"])==1){
+mis.5.1<-aload[aload$SITE_ABB=="MISS"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]
 missriv@data[missriv@data$Downstream=="07373420",][1:7,"load"]<-seq(missriv@data[missriv@data$Downstream=="322023090544500","load"][40]+yaz,mis.5.1+yaz,length.out=7)
 }else{missriv@data[missriv@data$Downstream=="07373420",][1:7,"load"]<-.011}
 
