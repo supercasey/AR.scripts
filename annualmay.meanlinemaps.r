@@ -242,8 +242,8 @@ if(!is.nan(mean(aload[aload$SITE_QW_ID=="07144100"&aload$CONSTIT==const&aload$MO
 		}else{missriv@data[missriv@data$Downstream=="07373420",][1:7,"load"]<-.011}
 
 		#POPULATE LOADS FOR THE MISSISSIPPI FROM THE OLD RIVER OUTFLOW TO ST FRANCISVILLE USING ST. FRANCISVILLE LOADS (THESE DATA WILL ALWAYS BE PRESENT)
-		if(!is.nan(mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY%in%wycur,"TONS"]))){
-			mis.6<-mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY%in%wycur,"TONS"])
+		if(!is.nan(mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$MODTYPE!="CONTIN"&aload$WY%in%wycur,"TONS"]))){
+			mis.6<-mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$MODTYPE!="CONTIN"&aload$WY%in%wycur,"TONS"])
 			missriv@data[missriv@data$Downstream=="07373420",][8:10,"load"]<-rep(mis.6,3)
 		}else{missriv@data[missriv@data$Downstream=="07373420",][8:10,"load"]<-.011}
 		
