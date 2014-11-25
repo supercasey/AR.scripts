@@ -15,4 +15,4 @@
 
 
 an.fwc<-function(aload,staid,const,wybeg,wycur){
-	return(mean(aload[aload$SITE_QW_ID==staid&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY %in% wybeg:(wycur-1)&!is.na(aload$FWC),
+	return(mean(aload[aload$SITE_QW_ID==staid&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$MODTYPE!="CONTIN"&aload$WY %in% wybeg:(wycur-1)&!is.na(aload$FWC),
