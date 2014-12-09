@@ -1,9 +1,5 @@
 
 
-
-
-
-
 #' Writes annual and May slds for all constituents based  on annual and monthly load data
 #' This script depends on the presence of a user-input sld file, annual and monthly load data, a user-defined set of nutrient abbreviations for which to compute the files, and set of periods (Annual or May)
 #' @param slds is a user input sld file identical in format to the no23_wy example provided to Casey via email November 2014, this file should be inputby the user  using the following command: slds<-scan("filename",what="",sep="\n")
@@ -32,32 +28,32 @@ consts<- c("NO23","TN","TP")
 ptypes<- c("WY","May")
 
 
-
 sld.wrap <- function (sld,consts,ptypes,a.ll,m.ll){
 	
 	#DEFINE SITES FOR USE IN MISS RIVER PAGE AND FOR COMPUTING JENKS BREAKS
 	misssites<-c("ALEX","BATO","BELL","CALU","CANN","CLIN","DESO","ELKH","GRAF","GRAN","HARR","HAST","HAZL","HERM","KEOS","KERS","LITT","LONG","LOUI","MELV","MISS","MORG","NEWH","NEWP","OMAH","PADU","SEDG","SEWI","SIDN","STFR","STTH","SUMN","THEB","VALL","VICK","WAPE")
 
-	aljenks.brks<-classIntervals(as.numeric(quantile(a.ll[a.ll$SITE_ABB %in% misssites&a.ll$MODTYPE %in% c("REG","REGHIST"),"TONS"],seq(.001,1,by=.001))),24,style="jenks",rtimes=1)$brks
-	mojenks.brks<-classIntervals(as.numeric(quantile(m.ll[m.ll$SITE_ABB %in% misssites&m.ll$MODTYPE %in% c("REG","REGHIST")&m.ll$MONTH==5,"TONS"],seq(.001,1,by=.001))),24,style="jenks",rtimes=1)$brks
+	aljenks.brks<-classIntervals(as.numeric(quantile(a.ll[a.ll$SITE_ABB %in% misssites&a.ll$MODTYPE %in% c("REG","REGHIST"),"TONS"],seq(.001,1,by=.001))),23,style="jenks",rtimes=1)$brks
+	mojenks.brks<-classIntervals(as.numeric(quantile(m.ll[m.ll$SITE_ABB %in% misssites&m.ll$MODTYPE %in% c("REG","REGHIST")&m.ll$MONTH==5,"TONS"],seq(.001,1,by=.001))),23,style="jenks",rtimes=1)$brks
 
 	for(j in 1:length(consts)){
 		for (k in 1:length(ptypes)){
-			
+			aljenks.brks
 			const<-consts[j]
 			p.type<-ptypes[k]
 			
 			##change line thickness values
 			#SUBSET SLD FILE INTO ROWS WITH THE WORD "LITERAL" FOR CHANGING LINE THICKNESS VALUES
 	sld.literal<-sld[grep("Literal",sld)]
+
 	#SPLIT UP SUBSET ROWS
 	sld.literal.split<-t(matrix(unlist(strsplit(	sld.literal,"[<>]")), ncol = 50))
-			
+
 	#TAKE JENKS BREAKS, DUPLICATE THEM, AND REORDER THEM, DEFINE jenks1 as annual for WY or monthly for May
 			if(p.type=="WY"){
-				jenks1<-rep(aljenks.brks,2)}else{jenks1<-rep(mojenks.brks,2)}
+				jenks1<-c(.011,.011,rep(aljenks.brks,2))}else{jenks1<-c(.011,.011,rep(mojenks.brks,2))}
 			jenks1<-as.character(jenks1[order(jenks1)])
-			
+
 	#REASSIGN LINE THICKNESS BASED ON JENKS BREAKS
 	sld.literal.split[,3]<-jenks1
 			
