@@ -241,8 +241,8 @@ missriv@data[missriv@data$Downstream=="07373420",][1:7,"load"]<-seq(missriv@data
 }else{missriv@data[missriv@data$Downstream=="07373420",][1:7,"load"]<-.011}
 
 #POPULATE LOADS FOR THE MISSISSIPPI FROM THE OLD RIVER OUTFLOW TO ST FRANCISVILLE USING ST. FRANCISVILLE LOADS (THESE DATA WILL ALWAYS BE PRESENT)
-if(length(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$MODTYPE!="CONTIN"&aload$WY==wycur,"TONS"])==1){
-	mis.6<-aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$MODTYPE!="CONTIN"&aload$WY==wycur,"TONS"]
+if(length(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"])==1){
+	mis.6<-aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$CONSTIT==const&aload$MODTYPE!="COMP"&aload$WY==wycur,"TONS"]
 missriv@data[missriv@data$Downstream=="07373420",][8:10,"load"]<-rep(mis.6,3)
 }else{missriv@data[missriv@data$Downstream=="07373420",][8:10,"load"]<-.011}
 
