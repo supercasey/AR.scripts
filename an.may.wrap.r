@@ -36,7 +36,3 @@ missriv<-missriv[,1:5]
 		}
 }
 
-library(classInt)
-aljenks.brks<-classIntervals(as.numeric(quantile(aljenks,seq(.001,1,by=.001))),24,style="jenks",rtimes=1)$brks
-mojenks.brks<-classIntervals(as.numeric(quantile(mojenks,seq(.001,1,by=.001))),24,style="jenks",rtimes=1)$brks
-
