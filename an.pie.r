@@ -22,7 +22,7 @@ gulfpie<-aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$WY==wyc
 redpie<-(aload[aload$SITE_QW_ID=="07355500"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])/gulfpie
 if(length(redpie)<1){redpie<-NA}
 #Compute the percentage of the total load from the Atchafalaya River basin and assign it to the variable "atchpie"
-atchpie<-(gulfpie-aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-redpie*gulfpie)/gulfpie
+atchpie<-(gulfpie-aload[aload$SITE_ABB=="MISS"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-redpie*gulfpie)/gulfpie
 
 if(length(atchpie)<1){atchpie<-NA}
 #Compute the percentage of the total load from the Arkansas River basin and assign it to the variable "arkpie"
@@ -47,7 +47,7 @@ lowmidmisspie<-(aload[aload$SITE_QW_ID=="07022000"&aload$WY==wycur&aload$CONSTIT
 if(length(lowmidmisspie)<1){lowmidmisspie<-NA}
 
 #Compute the percentage of the total load from the lower Mississippi river basin and assign it to the variable "lowmisspie"
-lowmisspie<-(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-aload[aload$SITE_QW_ID=="07022000"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-arkpie*gulfpie-ohpie*gulfpie)/gulfpie
+lowmisspie<-(aload[aload$SITE_ABB=="MISS"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-aload[aload$SITE_QW_ID=="07022000"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-arkpie*gulfpie-ohpie*gulfpie)/gulfpie
 if(length(lowmisspie)<1){lowmisspie<-NA}
 
 #Aggregate and name columns
