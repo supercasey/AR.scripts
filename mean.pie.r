@@ -33,7 +33,7 @@ gulfpie<-mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$WY
 #Compute the percentage of the total load from the Red River basin and assign it to the variable "redpie"
 redpie<-(mean(aload[aload$SITE_QW_ID=="07355500"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]))/gulfpie
 #Compute the percentage of the total load from the Atchafalaya River basin and assign it to the variable "atchpie"
-atchpie<-(mean(gulfpie-aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-redpie*gulfpie)/gulfpie
+atchpie<-(mean(gulfpie-aload[aload$SITE_ABB=="MISS"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-redpie*gulfpie)/gulfpie
 #Compute the percentage of the total load from the Arkansas River basin and assign it to the variable "arkpie"
 arkpie<-(mean(aload[aload$SITE_QW_ID=="07263620"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]))/gulfpie
 #Compute the percentage of the total load from the Missouri River basin and assign it to the variable "mopie"
@@ -47,7 +47,7 @@ upmidmisspie<-(mean(aload[aload$SITE_QW_ID=="05587455"&aload$WY %in%wys&aload$CO
 #Compute the percentage of the total load from the lower middle Mississippi river basin and assign it to the variable "lowmidmisspie"
 lowmidmisspie<-(mean(aload[aload$SITE_QW_ID=="07022000"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-mean(aload[aload$SITE_QW_ID=="05587455"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-mopie*gulfpie)/gulfpie
 #Compute the percentage of the total load from the lower Mississippi river basin and assign it to the variable "lowmisspie"
-lowmisspie<-(mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="MISS"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-mean(aload[aload$SITE_QW_ID=="07022000"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-arkpie*gulfpie-ohpie*gulfpie)/gulfpie
+lowmisspie<-(mean(aload[aload$SITE_ABB=="MISS"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-mean(aload[aload$SITE_QW_ID=="07022000"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-arkpie*gulfpie-ohpie*gulfpie)/gulfpie
 
 if(i==1&j==1&k==1){mean.pie1<-as.data.frame(c(redpie,atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
 														colnames(mean.pie1)<-"Value"
