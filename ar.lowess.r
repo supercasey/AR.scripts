@@ -9,7 +9,7 @@
 #' "DATE", which is the date the sample was collected; "WY" which is the water year in which loads are computed or flows were measured; 
 #' "CONCENTRATION", which is the constituent concentration in milligrams per liter; and "REMARK" which is the remark that pertains to the concentration value
 #' @param staid is a character representing the USGS station ID for the location desired 
-#' @param const is a character representing  the parameter to be computed, options (as of 2014) include TN, TP, NO23, SSC, and FLOW
+#' @param const is a character representing  the parameter to be computed, options (as of 2014) include TN, TP, NO3+NO2, SSC, and FLOW
 #' @param wybeg is a number representing the first water year with data used in the Annual Reporting website, this will likely be 1993
 #' @param wycur is a number representing the most recent water year with data used in the Annual Reporting website
 #' @return A data frame with two values; "DEC_DATE", which is the x-axis of the plot and "low.plot", which are the values to be plotted on the y-axis
