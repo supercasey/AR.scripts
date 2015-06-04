@@ -9,7 +9,7 @@
 #' MODTYPE, which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured; 
 #' "TONS", which is the water quality load in tons
 #' @param staid is a character representing the USGS station ID for the location desired for the mean annual load/flow
-#' @param const is a character representing  the parameter to be computed, options (as of 2014) include TN, TP, NO23, adn SSC
+#' @param const is a character representing  the parameter to be computed, options (as of 2014) include TN, TP, NO3+NO2, anD SSC
 #' @param wybeg is a number representing  the first water year desired for the mean annual load/flow, this should be 1993
 #' @param wycur is a number representing  last water year desired for the mean annual load/flow, this should be the most recent water year used in the Annual Reporting website
 #' @return A numeric value to be represented as a line on the flow-weighted concentration graphs on the detailed site reports portion on the NAWQA Annual Reporting website, incorrect input of values will produce a NaN value
