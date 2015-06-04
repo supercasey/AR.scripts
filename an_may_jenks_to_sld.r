@@ -3,7 +3,7 @@
 #' Writes annual and May slds for all constituents based  on annual and monthly load data
 #' This script depends on the presence of a user-input sld file, annual and monthly load data, a user-defined set of nutrient abbreviations for which to compute the files, and set of periods (Annual or May)
 #' @param slds is a user input sld file identical in format to the no23_wy example provided to Casey via email November 2014, this file should be inputby the user  using the following command: slds<-scan("filename",what="",sep="\n")
-#' @param consts is a character vector representing  the constituents to be mapped, currently defined as NO23, TN, and TP
+#' @param consts is a character vector representing  the constituents to be mapped, currently defined as NO3+NO2, TN, and TP
 #' @param ptypes are a character vector of types of loads, currently they include "WY" or "May"
 #' @param a.ll is a data frame with all annual loads and flows from all NAWQA National Fixed Site Network locations.  This data frame is requires 6 columns
 #' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONSTIT", which are abbreviations of the various water quality constituents;
@@ -22,7 +22,7 @@ library(classInt)
 sld<-scan("no23_wy.sld",what="",sep="\n")
 
 #DEFINE LIST OF CONSTITUENT ABBREVIATIONS
-consts<- c("NO23","TN","TP")
+consts<- c("NO3+NO2","TN","TP")
 
 #DEFINE TIME PERIODS FOR DISPLAY
 ptypes<- c("WY","May")
