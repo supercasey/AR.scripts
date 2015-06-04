@@ -13,7 +13,7 @@
 		#' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONSTIT", which are abbreviations of the various water quality constituents;
 		#' "MODTYPE", which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured; "MONTH", the month loads are computed;
 		#' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
-		#' @param const is a character representing  the constituent to be computed, options (as of 2014) include TN, TP, and NO23
+		#' @param const is a character representing  the constituent to be computed, options (as of 2014) include TN, TP, and NO3+NO2
 		#' @param wycur is a  numbers representing the most recent water year published on the annual reporting wiste are computed
 		#' @param p.type represents the option to pick water year or May Loads, the two options are "WY" or "May"
 		#' @param period represents the period in which mean loads are to be computed over; this is indicated by the starting year in which loads are to be computed which is either 1980 or 1993 
