@@ -6,8 +6,8 @@
 			#' @param periods represent the periods in which mean loads are to be computed over; this is indicated by the starting year in which loads are to be computed, currently either 1980 or 1993 
 			#' This script writes shape files with WY and May loads for each segment for May and Annual loads, shapefiles are named by constituent and type of mean value
 
-				consts<- c("NO23","TN","TP")
-				wycur<-2013
+				consts<- c("NO3+NO2","TN","TP")
+				wycur<-2014
 				ptypes<- c("WY","May")
 				periods<- c(1980,1993)
 				
