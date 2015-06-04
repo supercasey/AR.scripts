@@ -6,7 +6,7 @@
 #' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONSTIT", which are abbreviations of the various water quality constituents;
 #' "MODTYPE", which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured; 
 #' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
-#' @param consts is a vector of characters representing  the parameters to be computed, options (as of 2014) include TN, TP, and NO23
+#' @param consts is a vector of characters representing  the parameters to be computed, options (as of 2014) include TN, TP, and NO3+NO2
 #' @param wys is a vectors of numbers representing the water years desired for the pie chart, generally these will be 1993 to the current water year (expressed as 1993:2013 presently)
 #' @return A dataframe with five columns "Value", which is the value to be plotted in the pie chart; "Constit", the constiuent; "Ptype", which indicates the type of load (WY for water year in this case);"WY", the water year, and "Basin", the basin being plotted
 
