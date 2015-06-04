@@ -11,5 +11,5 @@
 #' @return A numeric value to be represented as a bar on the site summary reports portion on the NAWQA Annual Reporting website, incorrect input of values will produce a NaN value
 
 no23.exceed<-function(dconc,staid,wycur){
-return(100*(nrow(dconc[dconc$CONSTIT=="NO23"&dconc$SITE_QW_ID==staid&dconc$WY==wycur&dconc$CONCENTRATION>10,])/nrow(dconc[dconc$CONSTIT=="NO23"&dconc$SITE_QW_ID==staid&dconc$WY==wycur,])))
+return(100*(nrow(dconc[dconc$CONSTIT=="NO3+NO2"&dconc$SITE_QW_ID==staid&dconc$WY==wycur&dconc$CONCENTRATION>10,])/nrow(dconc[dconc$CONSTIT=="NO3+NO2"&dconc$SITE_QW_ID==staid&dconc$WY==wycur,])))
 }
