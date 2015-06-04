@@ -7,8 +7,8 @@
 #' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONSTIT", which are abbreviations of the various water quality constituents;
 #' "MODTYPE", which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured; "MONTH", the month loads are computed;
 #' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
-#' @param consts is a vector of characters representing  the parameters to be computed, options (as of 2014) include TN, TP, and NO23
-#' @param wys is a vector of numbers representing the water years desired for the pie chart, generally these will be 1993 to the current water year (expressed as 1993:2013 presently)
+#' @param consts is a vector of characters representing  the parameters to be computed, options (as of 2014) include TN, TP, and NO3+NO2
+#' @param wys is a vector of numbers representing the water years desired for the pie chart, generally these will be 1993 to the current water year (expressed as 1993:2014 presently)
 #' @return A dataframe with four columns "Value", which is the value to be plotted in the pie chart; "Constit", the constiuent; "Ptype", which indicates the type of load (May for May in this case); "WY", the water year, and "Basin", the basin being plotted
 
 mo.pie<-function(mload,consts,wys){
@@ -16,7 +16,7 @@ mo.pie<-function(mload,consts,wys){
 for(i in 1:length(wys)){
 	for(j in 1:length(consts)){
 		wycur <-wys[i]
-		#This example computes nitrate+nitrite pie charts for 2013 in the Mississippi River basin by setting the variable "const" to NO23. For TN and TP you would set the "const" variable to "TN" or "TP".  For a different year you would adjust the "wycur" variable.
+		#This example computes nitrate+nitrite pie charts for 2014 in the Mississippi River basin by setting the variable "const" to NO3+NO2. For TN and TP you would set the "const" variable to "TN" or "TP".  For a different year you would adjust the "wycur" variable.
 		const<-consts[j]
 #Compute the monthly gulf load and assign it to the variable "mgulfpie"
 mgulfpie<-mload[mload$SITE_QW_ID=="07373420"&mload$MONTH==mnth&mload$SITE_ABB=="STFR"&mload$WY==wycur&mload$CONSTIT==const&mload$MODTYPE %in% c("REG","REGHIST"),"TONS"]+mload[mload$SITE_QW_ID=="07381495"&mload$MONTH==mnth&mload$WY==wycur&mload$CONSTIT==const&mload$MODTYPE %in% c("REG","REGHIST"),"TONS"]
