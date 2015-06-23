@@ -1,6 +1,6 @@
 #' Writes shapefiles computed by annualmay.linemaps.r 
 #' This script depends on the presence of a user-input shapefile, "missriv" of mississippi river streams, "a.ll", a file of all annual loads in the basin, and "m.ll" a file of all monthly loads in the basin
-#' @param consts is a character vector representing  the constituents to be mapped, currently defined as NO3+NO2, TN, and TP
+#' @param consts is a character vector representing  the constituents to be mapped, currently defined as NO3_NO2, TN, and TP
 #' @param wycur is a  number representing the most recent water year published on the annual reporting wiste are computed, currently 2014
 #' @param wyears is a number vector of the years to be computed, currently from 1993 to wycur
 #' @param ptypes are a character vector of types of loads, currently they include "WY" or "May"
@@ -8,7 +8,7 @@
 #' This script writes shape files with WY and May loads for each segment for all possible constituents and years, the script also computes natural jenks breaks for annual (aljenks.brks) and may (mojenks.brks)  line thickness, this is dependent on the classInt package
 
 
-consts<- c("NO3+NO2","TN","TP")
+consts<- c("NO3_NO2","TN","TP")
 wycur<-2014
 wyears<- 1993:wycur
 ptypes<- c("WY","May")
