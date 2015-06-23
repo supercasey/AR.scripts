@@ -22,7 +22,7 @@ library(classInt)
 sld<-scan("no23_wy.sld",what="",sep="\n")
 
 #DEFINE LIST OF CONSTITUENT ABBREVIATIONS
-consts<- c("NO3+NO2","TN","TP")
+consts<- c("NO3_NO2","TN","TP")
 
 #DEFINE TIME PERIODS FOR DISPLAY
 ptypes<- c("WY","May")
