@@ -33,8 +33,8 @@ sld.wrap <- function (sld,consts,ptypes,a.ll,m.ll){
 	#DEFINE SITES FOR USE IN MISS RIVER PAGE AND FOR COMPUTING JENKS BREAKS
 	misssites<-c("ALEX","BATO","BELL","CALU","CANN","CLIN","DESO","ELKH","GRAF","GRAN","HARR","HAST","HAZL","HERM","KEOS","KERS","LITT","LONG","LOUI","MELV","MISS","MORG","NEWH","NEWP","OMAH","PADU","SEDG","SEWI","SIDN","STFR","STTH","SUMN","THEB","VALL","VICK","WAPE")
 
-	aljenks.brks<-classIntervals(as.numeric(quantile(a.ll[a.ll$SITE_ABB %in% misssites&a.ll$MODTYPE %in% c("REG","REGHIST")&a.ll$CONSTIT %in% c("TN","TP","NO23"),"TONS"],seq(.001,1,by=.001))),23,style="jenks",rtimes=1)$brks
-	mojenks.brks<-classIntervals(as.numeric(quantile(m.ll[m.ll$SITE_ABB %in% misssites&m.ll$MODTYPE %in% c("REG","REGHIST")&m.ll$MONTH==5&m.ll$CONSTIT %in% c("TN","TP","NO23"),"TONS"],seq(.001,1,by=.001))),23,style="jenks",rtimes=1)$brks
+	aljenks.brks<-classIntervals(as.numeric(quantile(a.ll[a.ll$SITE_ABB %in% misssites&a.ll$MODTYPE %in% c("REG","REGHIST")&a.ll$CONSTIT %in% c("TN","TP","NO3_NO2"),"TONS"],seq(.001,1,by=.001))),23,style="jenks",rtimes=1)$brks
+	mojenks.brks<-classIntervals(as.numeric(quantile(m.ll[m.ll$SITE_ABB %in% misssites&m.ll$MODTYPE %in% c("REG","REGHIST")&m.ll$MONTH==5&m.ll$CONSTIT %in% c("TN","TP","NO3_NO2"),"TONS"],seq(.001,1,by=.001))),23,style="jenks",rtimes=1)$brks
 
 	for(j in 1:length(consts)){
 		for (k in 1:length(ptypes)){
