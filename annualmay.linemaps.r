@@ -7,11 +7,11 @@
 #' The missriv shapefile data requires the columns Upstream, which defines the upstream USGS station ID (or identifies it as a headwater stream); "Downstream", which identifies the downstream station ID;
 #' and "TYPE", which identifies the order of subssections of streams among monitoring locations
 #' @param a.ll is a data frame with all annual loads and flows from all NAWQA National Fixed Site Network locations.  This data frame is requires 6 columns
-#' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONTIN", which are abbreviations of the various water quality constituents;
+#' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONSTIT", which are abbreviations of the various water quality constituents;
 #' "MODTYPE", which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured;
 #' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
 #' @param m.ll is a data frame with all monthly loads and flows from all NAWQA National Fixed Site Network locations.  This data frame is requires 7 columns
-#' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONTIN", which are abbreviations of the various water quality constituents;
+#' "SITE_QW_ID", which is the USGS station ID for the location used to collect water quality samples; "CONSTIT", which are abbreviations of the various water quality constituents;
 #' "MODTYPE", which are abbreviations of types of methods used to compute loads, "WY" which is the water year in which loads are computed or flows were measured; "MONTH", the month loads are computed;
 #' "TONS", which represent the annual water quality load, in tons; and "ANNFLOW_ACREFEET", which is the annual volume of flow, measured in acre-feet
 #' @param const is a character representing  the constituent to be computed, options (as of 2014) include TN, TP, and NO3_NO2
