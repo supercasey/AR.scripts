@@ -16,7 +16,7 @@ site<-c("GULF")
 aload<-aload[order(aload$SITE_ABB,aload$CONSTIT,aload$WY),]
 mload<-mload[order(mload$SITE_ABB,mload$CONSTIT,mload$WY),]
 
-wycur <-2013
+wycur <-2014
 
 constituents <- c("NO3_NO2", "TP", "TN")
 
