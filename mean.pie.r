@@ -27,7 +27,7 @@ mean.pie<-function(a.ll,m.ll,consts,wys){
 		#This example omputes nitrate+nitrite pie charts for 2014 in the Mississippi River basin by setting the variable "const" to NO3+NO2. For TN and TP you would set the "const" variable to "TN" or "TP".  For a different year you would adjust the "wycur" variable.
 		const<-consts[j]
 		if(p.type[k]=="WY"){aload<-a.ll}else if(p.type[k]=="May"){aload<-m.ll}
-		if(i==1){mlab<-paste(min(wys),max(wys),sep="_")}else if(i==2){mlab<-"1980_1996"}
+		if(i==1){mlab<-paste(min(wys),max(wys)-1,sep="_")}else if(i==2){mlab<-"1980_1996"}
 #Compute the total gulf load and assign it to the variable "gulfpie"
 gulfpie<-mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])+mean(aload[aload$SITE_QW_ID=="07381495"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])
 #Compute the percentage of the total load from the Red River basin and assign it to the variable "redpie"
