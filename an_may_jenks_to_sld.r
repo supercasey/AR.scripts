@@ -16,6 +16,8 @@
 #LOAD THE classInt LIBRARY SO AS TO COMPUTE JENKS BREAKS
 library(classInt)
 
+MAX_SHAPEFILE_COLUMN_NAME_LENGTH<-10
+
 #IMPORT SLD FROM A USER-DEFINED DIRECTORY
 template_sld<-scan("template.sld",what="",sep="\n")
 
@@ -93,7 +95,7 @@ template_sld.wrap <- function (template_sld,consts,ptypes,a.ll,m.ll){
 			
 			#REASSIGN PropertyName BASED ON CONSTITUENT AND TYPE OF ESTIMATE (WY OR MAY)
 			sld.property.split[,3]<-paste(const,p.type,sep="_")
-			sld[grep("PropertyName",sld)]<-	paste(	sld.property.split[,1],"<",	sld.property.split[,2],">",	sld.property.split[,3],"<",	sld.property.split[,4],">",sep="")
+			sld[grep("PropertyName",sld)]<-	paste(	sld.property.split[,1],"<",	sld.property.split[,2],">",	strtrim(sld.property.split[,3], MAX_SHAPEFILE_COLUMN_NAME_LENGTH),"<",	sld.property.split[,4],">",sep="")
       
 			#REASSIGN STYLE Name
 			sld.layerName<-sld[grep("LAYER_NAME", sld)]
