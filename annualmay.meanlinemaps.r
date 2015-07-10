@@ -24,7 +24,7 @@
 annualmay.meanlinemaps <- function (missriv,a.ll,m.ll,wycur,const,p.type,period){
 	missriv<-missriv[order(missriv$TYPE),]
 	if(p.type=="WY"){aload<-a.ll}else if(p.type=="May"){aload<-m.ll}
-	if(period==1980){wycur<-1980:1996}else if(period==1993){wycur<-1993:wycur}
+	if(period==1980){wycur<-1980:1996}else if(period==1993){wycur<-1993:wycur-1}
 	missriv$load <-NA
 	
 	#POPULATE LOADS FOR THE WHITE RIVER BASED ON LINEAR INTERPOLATION, IF NO DATA, SET LOADS TO .011
