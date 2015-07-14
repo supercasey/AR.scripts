@@ -25,6 +25,8 @@ if(length(redpie)<1){redpie<-NA}
 atchpie<-(gulfpie-aload[aload$SITE_ABB=="MISS"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-redpie*gulfpie)/gulfpie
 
 if(length(atchpie)<1){atchpie<-NA}
+#Combine Red and atchafalaya for map
+atchpie<-atchpie+redpie
 #Compute the percentage of the total load from the Arkansas River basin and assign it to the variable "arkpie"
 arkpie<-(aload[aload$SITE_QW_ID=="07263620"&aload$WY==wycur&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])/gulfpie
 if(length(arkpie)<1){arkpie<-NA}
@@ -52,19 +54,19 @@ if(length(lowmisspie)<1){lowmisspie<-NA}
 
 #Aggregate and name columns
 if(i==1&j==1){
-	an.pie1<-as.data.frame(c(redpie,atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
+	an.pie1<-as.data.frame(c(atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
 	colnames(an.pie1)<-"Value"
 	an.pie1$Constit<-consts[j]
 	an.pie1$Ptype<-"WY"
 	an.pie1$WY<-wycur
-	an.pie1$Basin<-c("RED","ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
+	an.pie1$Basin<-c("ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
 } else{
-	an.pie<-as.data.frame(c(redpie,atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
+	an.pie<-as.data.frame(c(atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
 	colnames(an.pie)<-"Value"
 							an.pie$Constit<-consts[j]
 							an.pie$Ptype<-"WY"
 							an.pie$WY<-wycur		
-	an.pie$Basin<-c("RED","ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
+	an.pie$Basin<-c("ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
 	an.pie1<-rbind(an.pie1,an.pie)
 }
 	}
