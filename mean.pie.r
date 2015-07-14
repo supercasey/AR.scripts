@@ -34,6 +34,8 @@ gulfpie<-mean(aload[aload$SITE_QW_ID=="07373420"&aload$SITE_ABB=="STFR"&aload$WY
 redpie<-(mean(aload[aload$SITE_QW_ID=="07355500"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]))/gulfpie
 #Compute the percentage of the total load from the Atchafalaya River basin and assign it to the variable "atchpie"
 atchpie<-(mean(gulfpie-aload[aload$SITE_ABB=="MISS"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-redpie*gulfpie)/gulfpie
+#Combine Red and atchafalaya for map
+atchpie<-atchpie+redpie
 #Compute the percentage of the total load from the Arkansas River basin and assign it to the variable "arkpie"
 arkpie<-(mean(aload[aload$SITE_QW_ID=="07263620"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"]))/gulfpie
 #Compute the percentage of the total load from the Missouri River basin and assign it to the variable "mopie"
@@ -49,19 +51,19 @@ lowmidmisspie<-(mean(aload[aload$SITE_QW_ID=="07022000"&aload$WY %in%wys&aload$C
 #Compute the percentage of the total load from the lower Mississippi river basin and assign it to the variable "lowmisspie"
 lowmisspie<-(mean(aload[aload$SITE_ABB=="MISS"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-mean(aload[aload$SITE_QW_ID=="07022000"&aload$WY %in%wys&aload$CONSTIT==const&aload$MODTYPE %in% c("REG","REGHIST"),"TONS"])-arkpie*gulfpie-ohpie*gulfpie)/gulfpie
 
-if(i==1&j==1&k==1){mean.pie1<-as.data.frame(c(redpie,atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
+if(i==1&j==1&k==1){mean.pie1<-as.data.frame(c(atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
 														colnames(mean.pie1)<-"Value"
 														mean.pie1$Constit<-consts[j]
 														mean.pie1$Ptype<-p.type[k]
 														mean.pie1$WY<-mlab		
-														mean.pie1$Basin<-c("RED","ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
+														mean.pie1$Basin<-c("ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
 												
-														} else{mean.pie<-as.data.frame(c(redpie,atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
+														} else{mean.pie<-as.data.frame(c(atchpie,arkpie,mopie,ohpie,upmisspie,upmidmisspie,lowmidmisspie,lowmisspie))
 													colnames(mean.pie)<-"Value"
 													mean.pie$Constit<-consts[j]
 													mean.pie$Ptype<-p.type[k]
 													mean.pie$WY<-mlab		
-													mean.pie$Basin<-c("RED","ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
+													mean.pie$Basin<-c("ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
 														mean.pie1<-rbind(mean.pie1,mean.pie)
 														}
 }
