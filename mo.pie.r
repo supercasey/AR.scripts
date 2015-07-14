@@ -28,7 +28,8 @@ if(length(mredpie)<1){mredpie<-NA}
 #Compute the percentage of the total load from the Atchafalaya River basin and assign it to the variable "matchpie"
 matchpie<-(mgulfpie-mload[mload$MONTH==mnth&mload$SITE_ABB=="MISS"&mload$WY==wycur&mload$CONSTIT==const&mload$MODTYPE %in% c("REG","REGHIST"),"TONS"]-mredpie*mgulfpie)/mgulfpie
 if(length(matchpie)<1){matchpie<-NA}
-
+#Combine Atchafalaya and Red River
+matchpie<-mredpie+matchpie
 #Compute the percentage of the total load from the Arkansas River basin and assign it to the variable "markpie"
 markpie<-(mload[mload$SITE_QW_ID=="07263620"&mload$MONTH==mnth&mload$WY==wycur&mload$CONSTIT==const&mload$MODTYPE %in% c("REG","REGHIST"),"TONS"])/mgulfpie
 if(length(markpie)<1){markpie<-NA}
@@ -61,19 +62,19 @@ if(length(mlowmisspie)<1){mlowmisspie<-NA}
 
 #Aggregate and name columns
 if(i==1&j==1){
-	mo.pie1<-as.data.frame(c(mredpie,matchpie,markpie,mmopie,mohpie,mupmisspie,mupmidmisspie,mlowmidmisspie,mlowmisspie))
+	mo.pie1<-as.data.frame(c(matchpie,markpie,mmopie,mohpie,mupmisspie,mupmidmisspie,mlowmidmisspie,mlowmisspie))
 	colnames(mo.pie1)<-"Value"
 	mo.pie1$Constit<-consts[j]
 	mo.pie1$Ptype<-"May"
 	mo.pie1$WY<-wycur
-	mo.pie1$Basin<-c("RED","ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
+	mo.pie1$Basin<-c("ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
 } else{
-	mo.pie<-as.data.frame(c(mredpie,matchpie,markpie,mmopie,mohpie,mupmisspie,mupmidmisspie,mlowmidmisspie,mlowmisspie))
+	mo.pie<-as.data.frame(c(matchpie,markpie,mmopie,mohpie,mupmisspie,mupmidmisspie,mlowmidmisspie,mlowmisspie))
 	colnames(mo.pie)<-"Value"
 	mo.pie$Constit<-consts[j]
 	mo.pie$Ptype<-"May"
 	mo.pie$WY<-wycur		
-	mo.pie$Basin<-c("RED","ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
+	mo.pie$Basin<-c("ATCHAFALAYA","ARKANSAS","MISSOURI","OHIO","UPPERMISS","UPPERMIDDLEMISS","LOWERMIDDLEMISS","LOWERMISS")
 	mo.pie1<-rbind(mo.pie1,mo.pie)
 }
 	}
